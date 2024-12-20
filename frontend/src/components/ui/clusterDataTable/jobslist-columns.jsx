@@ -1,3 +1,4 @@
+
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,10 +10,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowUpDown } from "lucide-react";
+import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
-export const jobsListColumns =  [
+export const jobsListColumns  = (onDataRefresh) => [
   {
     id: "select",
     header: ({ table }) => (
@@ -97,7 +101,22 @@ export const jobsListColumns =  [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original
+      const job = row.original
+     
+      const killJob = async (jobid) => {
+        try {
+          const response = await axios.delete(`http://localhost:5173/api/scheduler/killjob/${jobid}`);
+          if(response)
+          {
+            onDataRefresh();
+            toast.success(`${jobid} job Killed Successfully`);
+          }
+          
+      } catch (error) {
+        toast.error(`Error Killing ${jobid}`);
+        console.error("Error reading file:", error);
+      }
+      };
    
  
       return (
@@ -110,9 +129,8 @@ export const jobsListColumns =  [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem className="text-lg"
-            >
-             *******
+            <DropdownMenuItem className="text-md cursor-pointer" onClick={() => killJob(job.JOBID)}>
+                  Kill Job
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

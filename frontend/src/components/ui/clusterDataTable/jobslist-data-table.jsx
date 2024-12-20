@@ -25,7 +25,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 
-export function DataTable({ columns, data }) {
+export function DataTable({ columns, data, onDataRefresh }) {
     const [sorting, setSorting] = useState([]);
     const [columnFilters, setColumnFilters] = useState([]);
     const [columnVisibility, setColumnVisibility] = useState({});
@@ -56,7 +56,7 @@ export function DataTable({ columns, data }) {
         },
     });
 
-    console.log(table)
+
 
 
 

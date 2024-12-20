@@ -16,9 +16,10 @@ import {
   LoginScreen,
   NotFoundScreen,
   NetworkingScreen,
-  Cluster
+  Cluster,
+  JobsListScreen,
+  FileManagerScreen
 } from "./screens/index.js";
-import JobsListScreen from "./screens/clusterScreen/JobsListScreen.jsx";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -53,6 +54,9 @@ function App() {
             <Route element={<HomeScreen />}>
               <Route path='dashboard' element={<Dashboard />} />
               <Route path="jobs" element={<JobsScreen />} />
+              <Route path="users/:id" element={<UserDetailScreen />} />
+              <Route path='/jobhistory/:user' element={<JobsListScreen/>}/>
+              <Route path='/filemanager' element={<FileManagerScreen/>}/>
               {/* Add other routes for regular users here */}
             </Route>
             <Route path="*" element={<Navigate to="/dashboard" />} />

@@ -9,6 +9,7 @@ import { MdDashboard } from "react-icons/md";
 import { GrCluster } from "react-icons/gr";
 import { IoGitNetworkOutline } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
+import { FaFile } from "react-icons/fa";
 import {
   Sheet,
   SheetClose,
@@ -165,17 +166,7 @@ function HomeScreen() {
                     Networking
                   </NavLink>
                 </li>
-                <li className="flex  items-center mb-3 gap-x-2 text-center ">
-                  <MdDashboard />
-                  <NavLink
-                    to="/jobs"
-                    className={({ isActive }) =>
-                      isActive ? "text-blue-700 " : ""
-                    }
-                  >
-                    Jobs
-                  </NavLink>
-                </li>
+                
                 <li className=" flex  items-center mb-3 gap-x-2 text-center">
                   <FaUsers />
 
@@ -217,7 +208,7 @@ function HomeScreen() {
           </aside>
         ) : (
           <aside
-            className={`blg:w-72 ${isAsideOpen ? "block" : "hidden"}`}
+            className={`lg:w-72 ${isAsideOpen ? "block" : "hidden"} bg-gray-200 `}
           >
             <nav className="p-4">
 
@@ -247,6 +238,20 @@ function HomeScreen() {
                   >
                     Dashboard
                   </NavLink>
+
+                </li>
+                <li className="flex  items-center mb-3 gap-x-2 text-center ">
+                <FaFile />
+                <NavLink
+                    to="/filemanager"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-700 " : ""
+                    }
+                    end
+                  >
+                    File Manager
+                  </NavLink>
+
                 </li>
                
 

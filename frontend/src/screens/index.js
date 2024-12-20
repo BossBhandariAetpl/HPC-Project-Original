@@ -11,8 +11,9 @@ import LoginScreen from "./LoginScreen"
 import NotFoundScreen from "./NotFoundScreen"
 import ClusterScreen from "./ClusterScreen"
 import NetworkingScreen from "./NetworkingScreen"
-
+import JobsListScreen from "./clusterScreen/JobsListScreen"
 import Cluster from "./clusterScreen/Cluster"
+import FileManagerScreen from "./FileManagerScreen"
 
 export {
     HomeScreen,
@@ -28,5 +29,7 @@ export {
     NotFoundScreen,
     ClusterScreen,
     NetworkingScreen,
-    Cluster
+    Cluster,
+    JobsListScreen,
+    FileManagerScreen
 }

@@ -3,6 +3,7 @@ import { authUser, logoutUser, getUserProfile, getAllUsers, addUser, getUserByUI
 import trimRequestBody from "../middleware/trimRequestBody.js"
 import { protect } from "../middleware/authMiddleware.js";
 import { adminProtect } from "../middleware/adminProtect.js";
+import { admin_userProtect } from "../middleware/admin_userProtect.js";
 
 const userRouter = express.Router();
 
@@ -35,7 +36,7 @@ userRouter.route('/:uId/password').patch(protect, adminProtect,updateUserPasswor
 
 
 //get, update and delete user by id
-userRouter.route('/:uId').get(protect, adminProtect, getUserByUID).patch(protect, adminProtect, updateUserByUID).delete(protect, adminProtect, deleteUserByUID);
+userRouter.route('/:uId').get(protect, admin_userProtect, getUserByUID).patch(protect, adminProtect, updateUserByUID).delete(protect, adminProtect, deleteUserByUID);
 
 
 

@@ -16,7 +16,7 @@ import { useSelector } from "react-redux";
 
 export function Dashboard() {
   const {userInfo} = useSelector((state) => (state.auth))
-  console.log(userInfo)
+
   
   let content;
 
@@ -86,14 +86,14 @@ export function Dashboard() {
         icon: <FaUsers className="text-6xl md:text-8xl" />,
         title: "User Profile",
         color: "bg-blue-600",
-        url: ''
+        url: `/users/${userInfo.uId}`
       },
       {
         id: 2,
         icon: <FiClock className="text-6xl md:text-8xl" />,
         title: "Job History",
         color: "bg-amber-600",
-        url: ''
+        url: `/jobhistory/${userInfo.username}`
       },
       
     ];
