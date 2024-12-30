@@ -107,6 +107,9 @@ function HomeScreen() {
         </div>
         {/* <h1 className="text-white text-2xl font-bold">VR Mens Clothing</h1> */}
       </header>
+
+
+      
       <div className="flex lg:flex-1 lg:flex-row flex-col gap-12 overflow-hidden">
         {userInfo.role === 'admin' ? (
           <aside
@@ -195,12 +198,24 @@ function HomeScreen() {
                   <MdDashboard />
 
                   <NavLink
+                    to="/slurmworkload"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-700 " : ""
+                    }
+                  >
+                    Workload Manager
+                  </NavLink>
+                </li>
+                <li className=" flex  items-center mb-3 gap-x-2 text-center">
+                  <MdDashboard />
+
+                  <NavLink
                     to="/jobmonitoring"
                     className={({ isActive }) =>
                       isActive ? "text-blue-700 " : ""
                     }
                   >
-                    Job Monitoring
+                    Jobs History
                   </NavLink>
                 </li>
               </ul>

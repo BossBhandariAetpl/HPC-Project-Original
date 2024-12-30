@@ -14,6 +14,8 @@ import NetworkingScreen from "./NetworkingScreen"
 import JobsListScreen from "./clusterScreen/JobsListScreen"
 import Cluster from "./clusterScreen/Cluster"
 import FileManagerScreen from "./FileManagerScreen"
+import WorkloadScreen from "./WorkloadScreen"
+import SlurmcontrollerScreen from "./SlurmcontrollerScreen"
 
 export {
     HomeScreen,
@@ -31,5 +33,7 @@ export {
     NetworkingScreen,
     Cluster,
     JobsListScreen,
-    FileManagerScreen
+    FileManagerScreen,
+    WorkloadScreen,
+    SlurmcontrollerScreen
 }

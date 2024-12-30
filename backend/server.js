@@ -10,11 +10,13 @@ import nodeRouter from './routes/nodeControllerRoutes.js';
 import jobSchedulerRouter from './routes/jobSchedulerRoutes.js';
 import userjobSchedulerRouter from './routes/userjobSchedulerRoutes.js';
 import fileManagementRouter from './routes/fileManagementRoutes.js';
+import slurmControllerRouter from './routes/slurmControllerRoutes.js';
 import jobRouter from './routes/jobsRoutes.js';
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
 import passport from 'passport';
 import bodyParser from "body-parser";
+import slurmDatabaseRouter from './routes/slurmDatabaseRoutes.js';
 
 
 
@@ -44,6 +46,9 @@ app.use('/api/scheduler', jobSchedulerRouter)
 app.use('/api/userscheduler', userjobSchedulerRouter)
 app.use('/api/filemanagement', fileManagementRouter)
 app.use('/api/jobs', jobRouter)
+app.use('/api/slurmcontroller', slurmControllerRouter)
+app.use('/api/slurmdatabase', slurmDatabaseRouter)
+
 
 if (process.env.NODE_ENV === 'production'){
     const __dirname = path.resolve();

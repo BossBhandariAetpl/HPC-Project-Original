@@ -54,6 +54,15 @@ export function DataTable({ columns, data, onDataRefresh }) {
 
 
         },
+        filterFns: {
+            // Custom filtering logic for the 'state' column
+            stateFilter: (row, columnId, filterValue) => {
+                return row.getValue(columnId) == filterValue;
+            },
+        },
+        columnFilterFns: {
+            state: "stateFilter",
+        },
     });
 
 
@@ -66,16 +75,25 @@ export function DataTable({ columns, data, onDataRefresh }) {
         <div>
             <div className="flex items-center py-4">
                 <select
-                    value={table.getColumn("ST")?.getFilterValue() ?? ""}
-                    onChange={(event) =>
-                        table.getColumn("ST")?.setFilterValue(event.target.value)
-                    }
+                    value={table.getColumn("state")?.getFilterValue() ?? ""}
+                    onChange={(event) => {
+                        const selectedValue = event.target.value;
+                        console.log("Selected filter value:", selectedValue); // Debugging
+                        table.getColumn("state")?.setFilterValue(selectedValue);
+                    }}
                     className="max-w-sm mt-1 mx-2 px-3 py-2 bg-white border shadow-sm border-slate-300 focus:outline-none focus:border-gray-500 focus:ring-gray-500 block w-full rounded-md sm:text-sm focus:ring-1"
                 >
-                    <option value="">Select Status</option>
-
-                    <option value="PD">Pending</option>
-                    <option value="R">Running</option>
+                    <option value="">Select State</option>
+                    <option value="0">Pending</option>
+                    <option value="1">Running</option>
+                    <option value="2">Suspended</option>
+                    <option value="3">Completed</option>
+                    <option value="4">Cancelled</option>
+                    <option value="5">Failed</option>
+                    <option value="6">Time out</option>
+                    <option value="7">Node Fail</option>
+                    <option value="8">Preempted</option>
+                    <option value="9">Boot Fail</option>
                 </select>
 
                 <DropdownMenu>

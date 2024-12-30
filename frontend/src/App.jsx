@@ -18,7 +18,8 @@ import {
   NetworkingScreen,
   Cluster,
   JobsListScreen,
-  FileManagerScreen
+  FileManagerScreen,
+  WorkloadScreen
 } from "./screens/index.js";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -45,6 +46,7 @@ function App() {
               <Route path="jobmonitoring" element={<JobsListScreen />} />
               <Route path="cluster" element={<Cluster/>} />
               <Route path="networking" element={<NetworkingScreen />} />
+              <Route path="slurmworkload" element={<WorkloadScreen />} />
             </Route>
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </>

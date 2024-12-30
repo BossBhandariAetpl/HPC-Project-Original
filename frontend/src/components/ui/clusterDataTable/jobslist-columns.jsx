@@ -36,7 +36,7 @@ export const jobsListColumns  = (onDataRefresh) => [
     ),
   },
   {
-    accessorKey: "JOBID",
+    accessorKey: "id_job",
     header: ({ column }) => (
       <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
         JOB ID
@@ -45,7 +45,7 @@ export const jobsListColumns  = (onDataRefresh) => [
     ),
   },
   {
-    accessorKey: "NAME",
+    accessorKey: "job_name",
     header: ({ column }) => (
       <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
         JOB NAME
@@ -54,50 +54,74 @@ export const jobsListColumns  = (onDataRefresh) => [
     )
   },
   {
-    accessorKey: "PARTITION",
+    accessorKey: "nodelist",
     header: ({ column }) => (
       <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-        PARTITION
+        NODE LIST
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     )
   },
   {
-    accessorKey: "USER",
+    accessorKey: "nodes_alloc",
     header: ({ column }) => (
       <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-        USER
+        ALLOCATED NODES
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
   },
   {
-    accessorKey: "ST",
+    accessorKey: "state",
     header: ({ column }) => (
-      <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-        STATUS
-        <ArrowUpDown className="ml-2 h-4 w-4" />
-      </Button>
+        <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+            STATE
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
     ),
-  },
+    cell: ({ getValue }) => {
+        const state = getValue();
+        const stateDescription =
+            state === 0 ? "Pending" :
+            state === 1 ? "Running" :
+            state === 2 ? "Suspended" :
+            state === 3 ? "Completed" :
+            state === 4 ? "Cancelled" :
+            state === 5 ? "Failed" :
+            state === 6 ? "Time Out" :
+            state === 7 ? "Node Fail" :
+            state === 8 ? "Preempted" :
+            state === 9 ? "Boot Fail" :
+            "UNKNOWN: The job state is not recognized.";
+
+        return (
+            <div className="">
+                {stateDescription}
+            </div>
+        );
+    },
+},
   {
-    accessorKey: "TIME",
+    accessorKey: "work_dir",
     header: ({ column }) => (
       <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-        TIME
+        WORK DIRECTORY
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     )
   },
-  {
-    accessorKey: "NODELIST(REASON)",
-    header: ({ column }) => (
-      <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-        REASON
-        <ArrowUpDown className="ml-2 h-4 w-4" />
-      </Button>
-    )
-  },
+  // {
+  //   accessorKey: "submit_line",
+  //   header: ({ column }) => (
+  //     <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+  //       SUBMIT LINE
+  //       <ArrowUpDown className="ml-2 h-4 w-4" />
+  //     </Button>
+  //   )
+  // },
   {
     id: "actions",
     cell: ({ row }) => {

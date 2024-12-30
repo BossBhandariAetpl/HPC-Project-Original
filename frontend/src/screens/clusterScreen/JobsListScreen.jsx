@@ -17,8 +17,8 @@ const JobsListScreen = () => {
   const fetchJobsList = async () => {
     try {
       setLoading(true);
-      const response = await axios.get( !user ? "http://localhost:5173/api/scheduler/getjobsinfo" : `http://localhost:5173/api/userscheduler/${user}/getuserjobsinfo`); // Replace with your API endpoint
-      setjobsList(response.data?.jobs)
+      const response = await axios.get( !user ? "http://localhost:5173/api/jobs/getAlljobs" : `http://localhost:5173/api/userscheduler/${user}/getuserjobsinfo`); // Replace with your API endpoint
+      setjobsList(response.data)
     } catch (err) {
       setError(err.message);
     } finally {
