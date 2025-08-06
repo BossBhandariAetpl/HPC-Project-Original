@@ -1,4 +1,4 @@
-1. Change port from '8000' to '5173' in all file EXCEPT 'package-lock.json' and 'vite.config.js'
+1. Port issue : Implement Cors in server.js
 2. If project did not run and shows npm errors install Follow the following steps :
   2.1. install, run and start Npm inside 'frontend' directory too, seperately. Commands to be followed:
   2.2. install, run and start npm inside hpc-copy directort
